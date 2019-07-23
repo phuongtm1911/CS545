@@ -10,7 +10,7 @@
 <body>
 <h2>Ask for advice about your favorite roast:</h2>
 <p />
-<form action = "advice" method="post">
+<form action="advice" method="post">
     <%
         Map< String, String > roastMap = new HashMap<String, String>();
         roastMap.put("dark", "Dark");

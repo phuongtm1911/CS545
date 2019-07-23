@@ -1,7 +1,6 @@
 package mum.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -29,7 +28,8 @@ public class AuthenticationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../advice.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -50,14 +50,10 @@ public class AuthenticationServlet extends HttpServlet {
 			System.out.println(password);
 			response.sendRedirect("../index.jsp");
 		} else {
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../advice.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../loginSuccessful.jsp");
 			dispatcher.forward(request, response);
 		}
 
-
 	}
-
-
 
 }

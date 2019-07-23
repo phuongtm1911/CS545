@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Calculate</title>
 </head>
 <body>
     <form method='get' action='calc2'>

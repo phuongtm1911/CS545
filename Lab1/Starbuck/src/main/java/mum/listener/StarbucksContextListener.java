@@ -6,11 +6,9 @@ import javax.servlet.ServletContextListener;
 
 import mum.data.DataFacade;
 import mum.data.DataFacadeFactory;
-
  
 public class StarbucksContextListener implements ServletContextListener{
 
- 
 		  public void contextInitialized(ServletContextEvent event){
  
 			ServletContext servletContext = event.getServletContext();
@@ -24,9 +22,5 @@ public class StarbucksContextListener implements ServletContextListener{
  		  }
 
 		  public void contextDestroyed(ServletContextEvent event){}
-
- 
-
-
 
 }

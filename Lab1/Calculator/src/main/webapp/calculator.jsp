@@ -13,7 +13,6 @@
     <input type = "text" name = "mult2" value = ""  size = "2"/>=
     <input type = "text" name = "product" value = ""   size = "2" readonly/><br/>
     <input type = "submit" value = "Submit"/>
-
 </form>
 </body>
 </html>
