@@ -26,7 +26,8 @@ public class AdviceController {
 
 	@PostMapping("/advice.do")
 	public String getAdvices(Model model, @RequestParam String roast) {
-		model.addAttribute("roastList", adviceService.getAdvice(roast));
+		model.addAttribute("roastList", adviceService.getAdvice(roast.substring(1)));
+		model.addAttribute("roast", roast.substring(1).toUpperCase());
 		return "display";
 	}
 

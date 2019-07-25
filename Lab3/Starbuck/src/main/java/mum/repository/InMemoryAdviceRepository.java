@@ -28,19 +28,6 @@ public class InMemoryAdviceRepository implements AdviceRepository {
     }
 
     @Override
-    public List<String> getRoast() {
-        Map<String, Object> params = new HashMap<String, Object>();
-        List<Advice> adviceList = jdbcTemplate.query("SELECT * FROM advices", params, new AdviceMapper());
-        List<String> roast = new ArrayList<String>();
-        for (int i = 0; i < adviceList.size(); i++) {
-            if (!roast.contains(adviceList.get(i).getRoast())) {
-                roast.add(adviceList.get(i).getRoast());
-            }
-        }
-        return roast;
-    }
-
-    @Override
     public List<String> getAdvice(String roast) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("roast", roast);

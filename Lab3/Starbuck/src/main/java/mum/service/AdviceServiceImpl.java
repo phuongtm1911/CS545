@@ -12,11 +12,6 @@ public class AdviceServiceImpl implements AdviceService {
     AdviceRepository adviceRepository;
 
     @Override
-    public List<String> getRoast() {
-        return adviceRepository.getRoast();
-    }
-
-    @Override
     public List<String> getAdvice(String roast) {
         return adviceRepository.getAdvice(roast);
     }

@@ -11,6 +11,11 @@ public class AuthenticationController {
 	@Autowired
 	UserService userService;
 
+	@RequestMapping("/")
+	public String index() {
+		return "index";
+	}
+
 	@RequestMapping("/login.do")
 	public String login(@RequestParam String name, @RequestParam String password) {
 		String expectedPassword = userService.findPassword(name);

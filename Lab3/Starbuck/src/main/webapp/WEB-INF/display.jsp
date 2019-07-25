@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Starbuck's</title>
 </head>
 <body>
-	<h2>Starbuck's ${param["roast"]} Roast Coffees:</h2>
+	<h2>Starbuck's ${roast} Roast Coffees:</h2>
 	<form action="advice.do" method="get">
  		
 <table >
