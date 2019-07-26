@@ -14,18 +14,21 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Autowired
 	CategoryRepository categoryRepository;
-	
+
+	@Override
+	public Category getCategoryById(int id) {
+		return categoryRepository.getCategoryById(id);
+	}
+
+	@Override
+	public Category getCategoryByName(String name) {
+		return categoryRepository.getCategoryByName(name);
+	}
+
 	@Override
   	public List<Category> getAll() {
 		return categoryRepository.getAll();
 	}
 
-	@Override
-	public Category getCategory(int id) {
-		return categoryRepository.getCategory(id);
- 	}
-	
-	
-		   
 }
  

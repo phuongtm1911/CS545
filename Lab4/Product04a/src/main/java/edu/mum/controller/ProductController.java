@@ -34,10 +34,8 @@ public class ProductController {
  	
     @RequestMapping(value={"/","/product"}, method = RequestMethod.GET)
     public String inputProduct(@ModelAttribute("newProduct") Product product, Model model) {
- 
         List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
-      
         return "ProductForm";
     }
 
@@ -51,24 +49,18 @@ public class ProductController {
     	Product product = new Product();
     	model.addAttribute(product);
 */  
-    	Category category = categoryService.getCategory(product.getCategory().getId());
+    	Category category = categoryService.getCategoryById(product.getCategory().getId());
         product.setCategory(category);
-
     	productService.save(product);
     	model.addAttribute(product);
-    	System.out.println(product.getname());
-    	
         return "ProductDetails";
     }
     
     
     @RequestMapping(value="/listproducts")
     public String listProducts(Model model ) {
-    	
-    	
 		List<Product> list = productService.getAll();
 		model.addAttribute("products",  list);
-    	
         return "ListProducts";
     }
     

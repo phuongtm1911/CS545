@@ -9,8 +9,6 @@ import edu.mum.domain.Product;
 	public List<Product> getAll();
 	
 	public void save(Product product);
-	
-	
 		   
 }
  

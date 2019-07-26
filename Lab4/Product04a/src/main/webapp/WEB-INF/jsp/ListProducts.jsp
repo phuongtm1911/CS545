@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,18 +10,16 @@
 <div id="global">
     <h2>List of Products</h2>
 
-
-<table>
+	<table>
 		<tr><th>Name</th><th>Category</th><th>Description</th></tr>
-
-	<c:forEach var="product" items = "${products}">
-		<tr>
-		<td>${product.name}</td>
-		<td>${product.category.name}</td>
-		<td>${product.description}</td>
-		</tr>
-	</c:forEach>
-</table>   
+		<c:forEach var="product" items = "${products}">
+			<tr>
+			<td>${product.name}</td>
+			<td><spring:eval expression="product.category"/></td>
+			<td>${product.description}</td>
+			</tr>
+		</c:forEach>
+	</table>
 
     <form action="product" method="get">
            <input id="submit" type="submit"  

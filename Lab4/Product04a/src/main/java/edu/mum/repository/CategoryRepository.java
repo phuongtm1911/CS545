@@ -6,12 +6,12 @@ import edu.mum.domain.Category;
 import edu.mum.domain.Product;
 
  public interface CategoryRepository   {
-	
- 
-		public Category getCategory(int id);
+
+		public Category getCategoryById(int id);
+
+	 	public Category getCategoryByName(String name);
 		
 		public List<Category> getAll();
-		   
-	
+
 }
  

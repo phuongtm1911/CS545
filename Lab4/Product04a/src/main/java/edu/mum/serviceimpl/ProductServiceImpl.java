@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-    	public List<Product> getAll() {
+	public List<Product> getAll() {
 		return productRepository.getAll();
 	}
 	
@@ -23,8 +23,6 @@ public class ProductServiceImpl implements ProductService {
 		productRepository.save(product);
 		return ;
 	}
-	
-	
 		   
 }
  

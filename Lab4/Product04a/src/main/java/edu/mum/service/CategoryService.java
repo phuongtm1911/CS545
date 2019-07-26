@@ -6,7 +6,8 @@ import edu.mum.domain.Category;
 import edu.mum.domain.Product;
 
  public interface CategoryService  {	
-		public Category getCategory(int id);	
-		public List<Category> getAll();	
+ 	public Category getCategoryById(int id);
+ 	public Category getCategoryByName(String name);
+ 	public List<Category> getAll();
 }
  
