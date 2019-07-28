@@ -1,0 +1,16 @@
+package mum.service;
+
+import mum.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    UserRepository userRepository;
+
+    @Override
+    public String findPassword(String name) {
+        return userRepository.getPassword(name);
+    }
+}
