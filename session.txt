@@ -1,0 +1,60 @@
+@Controller
+@SessionAttributes({"phone"})
+public class ProductController {
+    @RequestMapping("/product")
+    public String populateProduct(Model model, HttpSession session) {
+        model.addAttribute("phone", "iPhone 8");
+// model: phone > iPhone 8
+// http session: nothing
+        session.setAttribute("tablet", "iPad");
+// model: phone > iPhone 8
+// http session: tablet > iPad
+        model.addAttribute("company", "Apple");
+// model: phone > iPhone 8, company > apple
+// http session: tablet > iPad
+        return "redirect:/display";
+    }
+    @RequestMapping("/display")
+    public String displayProduct(Model model, SessionStatus status) {
+        status.setComplete();
+// phone > iPhone 8, tablet > iPad, company > null
+        return "product";
+    }
+}
+
+After refreshing
+// phone > null, tablet > iPad, company > null
+
+@Controller
+@SessionAttributes({"phone"})
+public class ProductController {
+    @RequestMapping("/product")
+    public String populateProduct(Model model, HttpSession session) {
+        model.addAttribute("phone", "iPhone 8");
+// model: phone > iPhone 8
+// http session: nothing
+        session.setAttribute("tablet", "iPad");
+	session.setAttribute("phone", "iPhone X");
+// model: phone > iPhone 8
+// http session: tablet > iPad, phone > iPhone X
+        model.addAttribute("company", "Apple");
+// model: phone > iPhone 8, company > apple
+// http session: tablet > iPad, phone > iPhone X
+        return "redirect:/display";
+    }
+    @RequestMapping("/display")
+    public String displayProduct(Model model, SessionStatus status) {
+        status.setComplete();
+// phone > iPhone 8, tablet > iPad, company > null
+        return "product";
+    }
+}
+
+After refreshing
+// phone > null, tablet > iPad, company > null
+
+return "forward:/display";
+
+public String displayProduct(@RequestParam String phone, Model model, SessionStatus status)
+
+change ignore-default-model-on-redirect true/false
