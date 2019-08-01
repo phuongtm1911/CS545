@@ -1,0 +1,54 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th=="http://www.thymeleaf.org">
+<head>
+	<title>Add Employee Form</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{main.css}"/>
+</head>
+<body>
+
+	<div id="global">
+		<form th:object="${member}" action="#" method="post">
+			<fieldset>
+				<legend>Add a member</legend>
+				<p style="text-align: center; color: red" th:if="${#fields.hasErrors('all')}" th:errors="*{all}">
+					Errors
+				</p>
+				<p>
+					<label>First Name: </label>
+					<input type="text" th:field="*{firstName}"/>
+				<div style="text-align: center; color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+					error
+				</div>
+				</p>
+				<p>
+					<label>Last Name: </label>
+					<input type="text" th:field="*{lastName}"/>
+				<div style="text-align: center; color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+					error
+				</div>
+				</p>
+				<p>
+					<label>Member Number: </label>
+					<input type="text" th:field="*{memberNumber}"/>
+				<div style="text-align: center; color: red" th:if="${#fields.hasErrors('memberNumber')}" th:errors="*{memberNumber}">
+					error
+				</div>
+				</p>
+				<p>
+					<label>Age: </label>
+					<input type="text" th:field="*{age}"/>
+				<div style="text-align: center; color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+					error
+				</div>
+				</p>
+				<p id="buttons">
+					<input id="reset" type="reset" tabindex="4"> 
+					<input id="submit" type="submit" tabindex="5" value="Add Member">
+				</p>
+			</fieldset>
+		</form:form>
+	</div>
+</body>
+</html>

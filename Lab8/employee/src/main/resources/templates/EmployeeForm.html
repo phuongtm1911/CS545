@@ -1,0 +1,83 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th=="http://www.thymeleaf.org">
+<head>
+	<title>Add Employee Form</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{main.css}"/>
+</head>
+<body>
+
+	<div id="global">
+		<form th:object="${employee}" action="#" th:action="@{/employee_save}" method="post">
+			<fieldset>
+				<legend>Add an employee</legend>
+				<p style="text-align: center; color: red" th:if="${#fields.hasErrors('all')}" th:errors="*{all}">
+					Errors
+				</p>
+				<p>
+					<label>ID: </label>
+					<input type="text" th:field="*{id}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>First Name: </label>
+					<input type="text" th:field="*{firstName}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>Last Name: </label>
+					<input type="text" th:field="*{lastName}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>Date Of Birth: </label>
+					<input type="text" th:field="*{birthDate}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>Salary: </label>
+					<input type="text" th:field="*{salaryLevel}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('salaryLevel')}" th:errors="*{salaryLevel}">
+						error
+					</div>
+				</p>
+				<h4>Address:</h4>
+				<p>
+					<label>Street: </label>
+					<input type="text" th:field="*{address.street}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>State: </label>
+					<input type="text" th:field="*{address.state}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}">
+						error
+					</div>
+				</p>
+				<p>
+					<label>Zipcode: </label>
+					<input type="text" th:field="*{address.zipCode}"/>
+					<div style="text-align: center; color: red" th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}">
+						error
+					</div>
+				</p>
+				<p id="buttons">
+					<input id="reset" type="reset" tabindex="4"> 
+					<input id="submit" type="submit" tabindex="5" value="Add Employee">
+				</p>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

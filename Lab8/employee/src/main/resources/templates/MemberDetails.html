@@ -1,0 +1,18 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th=="http://www.thymeleaf.org">
+<head>
+    <title>Save Employee</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{main.css}"/>
+</head>
+<body>
+<div id="global">
+    <h4>The Member details have been saved.</h4>
+        <h5>Details:</h5>
+    First Name: <span th:text="${member.firstName}"></span></br>
+    Last Name: <span th:text="${member.lastName}"></span></br>
+    Age: <span th:text="${member.age}"></span>
+</div>
+</body>
+</html>
