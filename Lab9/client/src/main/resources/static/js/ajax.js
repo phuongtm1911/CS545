@@ -1,0 +1,101 @@
+(function ($) {
+    $.fn.serializeFormJSON = function () {
+
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+})(jQuery);
+
+function makeAjaxCall(){
+    let data = JSON.stringify($("#employeeForm").serializeFormJSON());
+
+	
+	$.ajax({
+        type: "POST",
+        url: "http://localhost:8888/api/addEmployee",
+        data: data,
+        contentType: "application/json",
+        dataType: "json",
+		success: function(data) {
+			$('#formInput').html("");
+			$("#formInput").append( '<H3 align="center"> New Employee Information <H3>');
+			$('#formInput').append("<H4 align='center'>First Name:  " +   + "</h4>"  );
+			$('#formInput').append("<H4 align='center'>Last Name: " +   + "</h4>" );
+			$('#formInput').append("<H4 align='center'>Email: " +   + "</h4>");
+			$("#formInput").append('<h4 align="center"> <a href="#" onclick="toggle_visibility(\'formInput\');resetForm(\'formInput\');"><b>EXIT</b> </a> </h4>');
+			make_visible('formInput');
+			make_hidden('errors');
+		},
+
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			
+            console.log(XMLHttpRequest.responseJSON);
+            $("#formInput").empty();
+
+            if (XMLHttpRequest.responseJSON.errorType == "ValidationError") {
+                let errorMsg = '<h3> Error(s)!! </h3>';
+                errorMsg += "<p>";
+                var errorList = XMLHttpRequest.responseJSON.fieldErrors;
+                $.each(errorList, function (i, error) {
+                    errorMsg = errorMsg + error.message + '<br>';
+                });
+                errorMsg += '</p';
+                $('#formInput').append(errorMsg);
+                $('#formInput').show();
+            } else {
+                alert(errorObject.responseJSON.errors(0));
+            }
+
+		}
+	
+	});
+}
+
+toggle_visibility = function(id) {
+    var element = document.getElementById(id);
+    if(element.style.display == 'block')
+    	element.style.display = 'none';
+    else
+    	element.style.display = 'block';
+ }	
+
+make_hidden = function(id) {
+    var element = document.getElementById(id);
+    element.style.display = 'none';
+        }	   
+
+make_visible = function(id) {
+    var element = document.getElementById(id);
+    element.style.display = 'block';
+ }	   
+
+resetForm = function(id) {
+    var element = document.getElementById(id);
+    $(element)[0].reset();
+
+    }	  
+
+// Translate form to array
+// Then put in JSON format
+ function serializeObject (form)
+{
+    var jsonObject = {};
+    var array = form.serializeArray();
+    $.each(array, function() {
+         	jsonObject[this.name] = this.value;
+    });
+    return jsonObject;
+
+};
+
