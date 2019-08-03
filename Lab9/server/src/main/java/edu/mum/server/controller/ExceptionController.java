@@ -18,7 +18,7 @@ import java.util.List;
 public class ExceptionController {
 
     @Autowired
-    MessageSourceAccessor messageAccessor;
+    private MessageSourceAccessor messageAccessor;
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

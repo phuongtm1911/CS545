@@ -2,16 +2,17 @@ package edu.mum.server.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class Employee {
 
-	@NotEmpty
+	@NotBlank
  	private String firstName;
-	@NotEmpty
-	@Size(min=3, max=10)
+	@NotBlank
+	@Size(min=3, max=10, message = "{Size.lastName.validation}")
  	private String lastName;
-	@NotEmpty
+	@NotBlank
  	private String email;
 
 	public String getFirstName() {

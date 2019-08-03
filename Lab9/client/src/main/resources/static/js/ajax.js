@@ -18,8 +18,8 @@
 })(jQuery);
 
 function makeAjaxCall(){
+    // let data = serializeObject($("#employeeForm"));
     let data = JSON.stringify($("#employeeForm").serializeFormJSON());
-
 	
 	$.ajax({
         type: "POST",
@@ -30,9 +30,9 @@ function makeAjaxCall(){
 		success: function(data) {
 			$('#formInput').html("");
 			$("#formInput").append( '<H3 align="center"> New Employee Information <H3>');
-			$('#formInput').append("<H4 align='center'>First Name:  " +   + "</h4>"  );
-			$('#formInput').append("<H4 align='center'>Last Name: " +   + "</h4>" );
-			$('#formInput').append("<H4 align='center'>Email: " +   + "</h4>");
+			$('#formInput').append("<H4 align='center'>First Name:  " + data.firstName  + "</h4>"  );
+			$('#formInput').append("<H4 align='center'>Last Name: " +  data.lastName + "</h4>" );
+			$('#formInput').append("<H4 align='center'>Email: " + data.email  + "</h4>");
 			$("#formInput").append('<h4 align="center"> <a href="#" onclick="toggle_visibility(\'formInput\');resetForm(\'formInput\');"><b>EXIT</b> </a> </h4>');
 			make_visible('formInput');
 			make_hidden('errors');
@@ -41,18 +41,19 @@ function makeAjaxCall(){
 		error: function(XMLHttpRequest, textStatus, errorThrown){
 			
             console.log(XMLHttpRequest.responseJSON);
-            $("#formInput").empty();
+            $("#errors").empty();
 
             if (XMLHttpRequest.responseJSON.errorType == "ValidationError") {
                 let errorMsg = '<h3> Error(s)!! </h3>';
                 errorMsg += "<p>";
-                var errorList = XMLHttpRequest.responseJSON.fieldErrors;
+                var errorList = XMLHttpRequest.responseJSON.errors;
                 $.each(errorList, function (i, error) {
                     errorMsg = errorMsg + error.message + '<br>';
                 });
                 errorMsg += '</p';
-                $('#formInput').append(errorMsg);
-                $('#formInput').show();
+                $('#errors').append(errorMsg);
+                make_hidden('formInput');
+                make_visible('errors');
             } else {
                 alert(errorObject.responseJSON.errors(0));
             }
