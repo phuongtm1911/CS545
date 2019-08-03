@@ -1,7 +1,5 @@
 package edu.mum.server.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

@@ -23,7 +23,7 @@ public class ExceptionController {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-       public DomainErrors handleException(MethodArgumentNotValidException exception) {
+    public DomainErrors handleException(MethodArgumentNotValidException exception) {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
    
         DomainErrors errors = new DomainErrors();
@@ -32,10 +32,7 @@ public class ExceptionController {
          	DomainError error = new DomainError( messageAccessor.getMessage(fieldError));
                        errors.addError(error);
         }
-         
          return errors;
     }
-     
-  
-  
+
 }
