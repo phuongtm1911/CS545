@@ -2,10 +2,7 @@ package com.phoenix.ecommerce.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -14,6 +11,7 @@ public class Cart {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany
-    private List<Item> items;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CartItem> cartItems;
+
 }

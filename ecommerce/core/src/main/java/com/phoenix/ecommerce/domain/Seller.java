@@ -17,8 +17,12 @@ public class Seller implements Serializable {
     private String phone;
     @OneToOne
     private Address address;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;
+    private Boolean approval;
+    @ManyToMany
+    private List<Buyer> buyers;
 }

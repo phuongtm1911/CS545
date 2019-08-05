@@ -16,9 +16,9 @@ public class Order implements Serializable {
     @GeneratedValue
     private Long id;
     @OneToMany
-    private List<Item> items;
+    private List<OrderItem> items;
     private BigDecimal totalPrice;
-    @ManyToOne(cascade=CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="buyer_id")
     private Buyer buyer;
     @OneToOne(cascade=CascadeType.PERSIST)
@@ -33,5 +33,6 @@ public class Order implements Serializable {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     private Date createdDate = new Date();
+    private Date endDate = new Date();
 
 }
