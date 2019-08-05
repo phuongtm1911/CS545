@@ -1,0 +1,129 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">
+            Admin
+        </title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}" />
+        <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css}" />
+        <link rel="stylesheet" th:href="@{https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" />
+        <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.css}" />
+        <link rel="stylesheet" th:href="@{/dist/css/skin-blue.css}" />
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Main Header -->
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="#" th:href="@{/home}" class="logo">
+                    <span class="logo-mini"><b></b></span>
+                </a>
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs" sec:authentication="principal.user.name">User</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <p>
+                                            <span sec:authentication="principal.user.name">User</span>
+                                        </p>
+                                    </li>
+
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" th:href="@{/myAccount}" class="btn btn-default btn-flat">Profile</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="logout" th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+
+                    <div class="user-panel">
+                        <div class="pull-left info">
+                            <p><span sec:authentication="principal.user.name">User</span></p>
+                            <!-- Status -->
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Menu -->
+
+                    <ul class="sidebar-menu">
+                        <li th:class="${CURRENT_MENU == 'Home'}? 'active' : ''" ><a href="#" th:href="@{'/home'}"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Categories'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/categories'}"><i class="fa fa-folder-open"></i> <span>Categories</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Products'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/products'}"><i class="fa fa-file"></i> <span>Products</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Orders'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/orders'}"><i class="fa fa-cart-arrow-down"></i> <span>Orders</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Buyers'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/buyers'}"><i class="fa fa-smile-o"></i> <span>Buyers</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Sellers'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/sellers'}"><i class="fa fa-smile-o"></i> <span>Sellers</span></a></li>
+                        <li th:class="${CURRENT_MENU == 'Users'}? 'active' : ''"  sec:authorize="hasRole('ADMIN')"><a href="#" th:href="@{'/users'}"><i class="fa fa-users"></i> Users</a></li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+
+                <div layout:fragment="pageHeader">
+                    <section class="content-header">
+                        <h1>
+                            Header Title
+                        </h1>
+                    </section>
+                </div>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div layout:fragment="content">
+                        <!-- Your Page Content Here -->
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2019</strong>
+            </footer>
+
+        </div>
+
+    </body>
+</html>
