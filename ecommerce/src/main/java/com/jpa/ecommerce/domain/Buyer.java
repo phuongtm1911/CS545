@@ -1,4 +1,4 @@
-package com.phoenix.ecommerce.domain;
+package com.jpa.ecommerce.domain;
 
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class Buyer implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
     @OneToMany(mappedBy = "buyer", cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<Orders> orders;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private Cart cart;

@@ -1,4 +1,4 @@
-package com.phoenix.ecommerce.domain;
+package com.jpa.ecommerce.domain;
 
 import lombok.Data;
 

@@ -1,13 +1,12 @@
-package com.phoenix.ecommerce.domain;
+package com.jpa.ecommerce.domain;
 
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
-@Data
+
 @Entity
 public class Address {
     @Id

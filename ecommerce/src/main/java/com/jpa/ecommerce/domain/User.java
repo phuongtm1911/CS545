@@ -1,4 +1,4 @@
-package com.phoenix.ecommerce.domain;
+package com.jpa.ecommerce.domain;
 
 import lombok.Data;
 
@@ -7,16 +7,14 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Data
+
 @Entity
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(nullable=false, unique=true)
     @NotBlank
     private String username;
-    @Column(nullable=false, unique=true)
     @NotBlank
     @Email(message="{errors.invalid_email}")
     private String email;

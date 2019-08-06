@@ -1,4 +1,4 @@
-package com.phoenix.ecommerce.domain;
+package com.jpa.ecommerce.domain;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Order implements Serializable {
+public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
