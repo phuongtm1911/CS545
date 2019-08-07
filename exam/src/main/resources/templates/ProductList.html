@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Category List</title>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" th:src="@{/Main.js}"></script>
+</head>
+
+<body>
+<h1>Product List</h1>
+    <form action="#" th:action="@{/addProduct}">
+        <input type="submit" value="Add Product"/>
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+
+        <tr th:each="product: ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.title}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <form th:object="${product}" action="#" th:action="@{/getProduct/} + ${product.id}">
+                    <input type="submit" value="Detail"/>
+                </form>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

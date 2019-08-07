@@ -1,0 +1,48 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html>
+<meta charset="UTF-8">
+<title>Category List</title>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" th:src="@{/Main.js}"></script>
+</head>
+
+<body>
+<h1>Category List</h1>
+    <div id="categoryList">
+        <button onclick="addCategory();">Add Category</button>
+        <table style="width: 100%;">
+            <tr>
+                <th style="width: 40%;">Name</th>
+                <th style="width: 60%;">Description</th>
+            </tr>
+            <tr th:each="category: ${categories}">
+                <td th:text="${category.name}"></td>
+                <td th:text="${category.description}"></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Success - or Validation errors -->
+    <div id="addCategory" style="display:none" >
+    <div id="result" style="display:none" >
+        <p id="success" ></p>
+        <p id="errors" ></p>
+    </div>
+        <form id="categoryForm" method="post">
+            <p>
+                <label>Name: </label>
+                <input type="text" id="name" name="name"/>
+            </p>
+            <p>
+                <label>Description: </label>
+                <input type="text" id="description" name="description"/><br/>
+            </p>
+            <input type="submit" value="Add Category" id="categoryBtn" />
+        </form>
+        <a href="#" onclick="exit();">EXIT</a>
+    </div>
+
+</body>
+</html>
