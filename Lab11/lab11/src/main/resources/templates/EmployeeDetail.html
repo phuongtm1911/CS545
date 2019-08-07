@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}"/>
+    <title>Employee Detail</title>
+</head>
+<body>
+    <h3>Employee Detail</h3>
+    Number: <span th:text="${employee.number}"></span></br>
+    First Name: <span th:text="${employee.firstName}"></span></br>
+    Last Name: <span th:text="${employee.lastName}"></span></br>
+    Address: </br>
+    Street: <span th:text="${employee.address.street}"></span></br>
+    City: <span th:text="${employee.address.city}"></span></br>
+    State: <span th:text="${employee.address.state}"></span></br>
+    Zipcode: <span th:text="${employee.address.zipcode}"></span></br>
+    <form th:object="${employee}" action="#" th:action="@{/update_employee/} + ${employee.id}">
+        <input type="submit" value="Update"/>
+    </form>
+    <form th:object="${employee}" action="#" th:action="@{/delete_employee/} + ${employee.id}" method="post">
+        <input type="submit" value="Delete"/>
+    </form>
+</body>
+</html>

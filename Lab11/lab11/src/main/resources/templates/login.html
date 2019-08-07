@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <form th:action="@{/login}" method="post">
+        <h3>Sign in</h3>
+        <br/>
+        <input type="text" id="username" name="username" th:placeholder="Username"/> <br/>
+        <input type="password" th:placeholder="Password" id="password" name="password" /> <br/>
+        <div align="center" th:if="${loginError}">
+            <p style="font-size: 20; color: #FF1C19;">Invalid Email or Password</p>
+        </div>
+        <input type="checkbox" name="remember-me" /> Remember Me?<br/>
+        <button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+    </form>
+</div>
+</body>
+</html>
